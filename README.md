@@ -1,6 +1,7 @@
 ## QR Generator Landing Page
 
 Framework : Next 14.1.0
+
 Dependencies :
 - gsap 3.12.5
 - qrcode.react 3.1.0
