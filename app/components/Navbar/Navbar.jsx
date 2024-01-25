@@ -13,8 +13,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Navbar = ({ path }) => {
+  // const path = usePathname();
+
   const [scrollTop, setScrollTop] = useState(0);
   const prevScroll = useRef();
+  const router = useRouter();
 
   const [activeMobile, setActiveMobile] = useState(false);
 
@@ -46,7 +49,7 @@ const Navbar = ({ path }) => {
     <nav
       className={`navigation ${
         prevScroll.current < scrollTop ? "scroll" : ""
-      } `}
+      } ${activeMobile ? "mobile_active dark" : ""}`}
     >
       <button className="toggle_button" onClick={handleActiveMobile}>
         {activeMobile ? (
@@ -58,7 +61,7 @@ const Navbar = ({ path }) => {
       <div className="container">
         <div className="logo">
           <h1>
-            QR<span>GENERATOR</span>
+            QR<span>-Generator</span>
           </h1>
         </div>
         <ul className="nav_list">
