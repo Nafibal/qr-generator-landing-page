@@ -1,0 +1,33 @@
+// C5DBF0
+
+@mixin respon($breakpoint) {
+  @if $breakpoint == phone-pot {
+    @media only screen and (max-width: 480px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == phone-land {
+    @media (max-width: 767px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tb-pot {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop-small {
+    @media (max-width: 1400px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop-mid {
+    @media (max-width: 1800px) {
+      @content;
+    }
+  }
+}

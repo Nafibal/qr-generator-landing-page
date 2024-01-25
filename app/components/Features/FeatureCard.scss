@@ -1,0 +1,22 @@
+@import "../../base.scss";
+
+.feature_card {
+  background-color: white;
+  width: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.114);
+  transition-duration: 0.25s;
+
+  &:hover {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.205);
+  }
+
+  .feature_info {
+    padding: 1rem;
+    min-height: 70px;
+    color: white;
+    font-weight: 600;
+    background-color: rgb(51, 59, 72);
+  }
+}

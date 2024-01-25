@@ -1,0 +1,88 @@
+@import "../../base.scss";
+
+.hero {
+  width: 100vw;
+  height: 100vh;
+  // background-color: rgba(58, 98, 230, 0.904);
+  background-image: linear-gradient(
+    150deg,
+    hsl(206deg 14% 10%) 0%,
+    hsl(207deg 13% 17%) 79%,
+    hsl(204deg 12% 24%) 95%,
+    hsl(207deg 11% 31%) 100%,
+    hsl(207deg 10% 38%) 101%,
+    hsl(207deg 9% 45%) 102%,
+    hsl(206deg 9% 56%) 102%,
+    hsl(210deg 10% 67%) 101%,
+    hsl(207deg 10% 78%) 101%,
+    hsl(216deg 9% 89%) 100%,
+    hsl(0deg 0% 100%) 100%
+  );
+
+  .hero_info {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    .hero_left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: left;
+      width: 50%;
+
+      .hero_title {
+        font-family: "Montserrat", sans-serif;
+        color: white;
+        font-size: 3.8rem;
+        font-weight: black;
+        letter-spacing: 4px;
+        margin-bottom: 0.5rem;
+
+        clip-path: inset(100% -20% -20% -20%);
+      }
+
+      .hero_subtitle {
+        width: 90%;
+        color: rgba(255, 255, 255, 0.8);
+        font-family: "Cabin", sans-serif;
+        font-weight: 400;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+        line-height: 1.5em;
+        margin-bottom: 1rem;
+
+        clip-path: inset(100% -20% -20% -20%);
+      }
+
+      .hero_button {
+        width: 200px;
+        font-family: "Montserrat";
+        font-weight: 700;
+        font-size: 1.2rem;
+        padding: 0.5rem 2rem;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        background-color: rgb(51, 59, 72);
+        color: white;
+        cursor: pointer;
+        transition-duration: 0.25s;
+
+        clip-path: inset(100% -0% -0% -0%);
+
+        &:hover {
+          background-color: #c5dbf0;
+          color: black;
+        }
+      }
+    }
+  }
+
+  .hero_right {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+  }
+}
