@@ -2,6 +2,7 @@
 import React from "react";
 import qr_vector from "../../../public/assets/qrcode-2.png";
 import Image from "next/image";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -83,9 +84,11 @@ const Hero = () => {
               QR-Generator is an app for you to discover and customize a huge
               variety of generated QR codes.
             </h3>
-            <button className="hero_button" ref={heroButtonRef}>
-              Learn more
-            </button>
+            <Link to="feature" smooth={true} duration={1000}>
+              <button className="hero_button" ref={heroButtonRef}>
+                Learn more
+              </button>
+            </Link>
           </div>
           <div className="hero_right" ref={heroRightRef}>
             <div>

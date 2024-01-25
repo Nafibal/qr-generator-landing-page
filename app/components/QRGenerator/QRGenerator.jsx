@@ -1,8 +1,13 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import QRCode from "qrcode.react";
 
 import "./QRGenerator.scss";
 import Container from "../container/Container";
+
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const QRGenerator = () => {
   const [text, setText] = useState("");
@@ -10,6 +15,54 @@ const QRGenerator = () => {
   const [foreground, setForeground] = useState("#000000");
   const [background, setBackground] = useState("#ffffff");
   const canvasRef = useRef(null);
+
+  const generatorRef = useRef();
+  const generatorTitleRef = useRef();
+  const generatorSubtitleRef = useRef();
+  const qrRef = useRef();
+
+  useEffect(() => {
+    let generatorTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: generatorRef.current,
+        start: "20% 75%",
+      },
+    });
+    generatorTl
+      .fromTo(
+        [generatorTitleRef.current],
+        {
+          delay: 0.5,
+          clipPath: "inset(100% -20% -20% -20%)",
+        },
+        {
+          clipPath: "inset(-20% -20% -20% -20%)",
+          duration: 0.5,
+        }
+      )
+      .fromTo(
+        [generatorSubtitleRef.current],
+        {
+          delay: 0.5,
+          clipPath: "inset(100% -20% -20% -20%)",
+        },
+        {
+          clipPath: "inset(-20% -20% -20% -20%)",
+          duration: 0.5,
+        }
+      )
+      .fromTo(
+        [qrRef.current],
+        {
+          delay: 0.5,
+          clipPath: "inset(100% -20% -20% -20%)",
+        },
+        {
+          clipPath: "inset(-20% -20% -20% -20%)",
+          duration: 0.5,
+        }
+      );
+  }, []);
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -25,13 +78,17 @@ const QRGenerator = () => {
   };
 
   return (
-    <section className="generator" id="app">
+    <section className="generator" id="app" ref={generatorRef}>
       <Container>
         <div className="generator_title_container">
-          <h2 className="generator_title">Try For Yourself</h2>
-          <h4 className="generator_subtitle">Use it and feel the magic!</h4>
+          <h2 className="generator_title" ref={generatorTitleRef}>
+            Try For Yourself
+          </h2>
+          <h4 className="generator_subtitle" ref={generatorSubtitleRef}>
+            Use it and feel the magic!
+          </h4>
         </div>
-        <div className="QR_container">
+        <div className="QR_container" ref={qrRef}>
           <div className="qr_input">
             <div className="input_container">
               <label htmlFor="">Text:</label>
