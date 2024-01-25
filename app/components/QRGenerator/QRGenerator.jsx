@@ -6,6 +6,7 @@ import Container from "../container/Container";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import useGeneratorAnimation from "@/app/hooks/useGeneratorAnimation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,48 +22,13 @@ const QRGenerator = () => {
   const generatorSubtitleRef = useRef();
   const qrRef = useRef();
 
-  useEffect(() => {
-    let generatorTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: generatorRef.current,
-        start: "20% 75%",
-      },
-    });
-    generatorTl
-      .fromTo(
-        [generatorTitleRef.current],
-        {
-          delay: 0.5,
-          clipPath: "inset(100% -20% -20% -20%)",
-        },
-        {
-          clipPath: "inset(-20% -20% -20% -20%)",
-          duration: 0.5,
-        }
-      )
-      .fromTo(
-        [generatorSubtitleRef.current],
-        {
-          delay: 0.5,
-          clipPath: "inset(100% -20% -20% -20%)",
-        },
-        {
-          clipPath: "inset(-20% -20% -20% -20%)",
-          duration: 0.5,
-        }
-      )
-      .fromTo(
-        [qrRef.current],
-        {
-          delay: 0.5,
-          clipPath: "inset(100% -20% -20% -20%)",
-        },
-        {
-          clipPath: "inset(-20% -20% -20% -20%)",
-          duration: 0.5,
-        }
-      );
-  }, []);
+  // Animation
+  useGeneratorAnimation(
+    generatorRef,
+    generatorTitleRef,
+    generatorSubtitleRef,
+    qrRef
+  );
 
   const handleChange = (e) => {
     setText(e.target.value);
